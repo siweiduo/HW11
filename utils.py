@@ -30,7 +30,6 @@ def index_data(sentences, dictionary):
 def get_train_data(vocabulary, batch_size, num_steps):
     ##################
     # Your Code here
-    ##################
     raw_x = vocabulary
     raw_y = vocabulary[1:]
     data_length = len(raw_x)
@@ -45,7 +44,8 @@ def get_train_data(vocabulary, batch_size, num_steps):
         x = data_x[:, i * num_steps:(i + 1) * num_steps]
         y = data_y[:, i * num_steps:(i + 1) * num_steps]
         yield (x, y)
-
+    ##################
+    
 def build_dataset(words, n_words):
     count = [['UNK', -1]]
     count.extend(collections.Counter(words).most_common(n_words - 1))
