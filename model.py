@@ -66,10 +66,10 @@ class Model():
 
         with tf.variable_scope('rnn'):
             ##################
+            # Your Code here
             lstm_cell = tf.nn.rnn_cell.MultiRNNCell([self.make_cell() for i in range(self.rnn_layers)])
             self.state_tensor = lstm_cell.zero_state(self.batch_size,dtype=tf.float32)
             seq_output,self.outputs_state_tensor = tf.nn.dynamic_rnn(lstm_cell,data,initial_state=self.state_tensor)
-
             ##################
 
         # flatten it
@@ -77,6 +77,7 @@ class Model():
 
         with tf.variable_scope('softmax'):
             ##################
+            # Your Code here
             w_o = tf.get_variable('w_o',[self.dim_embedding,self.num_words],initializer=tf.truncated_normal_initializer(stddev=0.001))
             b_o = tf.get_variable('b_o',[self.num_words,],initializer=tf.constant_initializer(0.0))
             logits = tf.matmul(seq_output_final,w_o)+b_o
