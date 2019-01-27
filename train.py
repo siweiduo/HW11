@@ -56,6 +56,7 @@ with tf.Session() as sess:
         for dl in utils.get_train_data(vocabulary, batch_size=FLAGS.batch_size, num_steps=FLAGS.num_steps):
 
             ##################
+            # Your Code here
             X = utils.index_data(dl[0],dictionary)
             Y = utils.index_data(dl[1],dictionary)
             feed_dict = {model.X:X,model.Y:Y,model.state_tensor:state,model.keep_prob:0.7,model.is_training:1}
